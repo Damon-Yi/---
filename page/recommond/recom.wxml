@@ -1,0 +1,109 @@
+<view class="anniver_active">
+    <image class="main_bg" src="../../images/anniversary_12.png"></image>
+    <view class="main_cont">
+        <view>
+            <image class="a_img_0" src="../../images/anniversary_8.png"></image>
+            <image class="a_img_1" src="../../images/anniversary_9.png"></image>
+            <image class="a_img_2" src="../../images/anniversary_17.png"></image>
+        </view>
+        <view class="rolling_news swiper-container">
+            <!-- <view class="swiper-wrapper">
+                <view class="swiper-slide"><span class="rolling_new">我是滚动的中奖信息~~~</span></view>
+                <view class="swiper-slide"><span class="rolling_new">我是滚动的中奖信息~~~</span></view>
+                <view class="swiper-slide"><span class="rolling_new">我是滚动的中奖信息~~~</span></view>
+            </view> -->
+        </view>
+        <view class="re_cont">
+            <view class="re_users">
+                <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+                    <view class="re_user">
+                        <view class="re_u_img"><image class="a_u_img" src="../../images/anniversary_10.png"></image></view>
+                        <view class="re_u_txt">{{item.name}}</view>
+                    </view>
+                </block>
+                <view class="re_user_default">
+                    <view class="re_u_img"><image class="a_u_img" src="../../images/anniversary_11.png"></image></view>
+                    <view class="re_u_txt">XXX</view>
+                </view>
+            </view>
+            <view class="tips0">好友办单，你和好友都可抽大奖！</view>
+            <view class="re_form">
+                <view class="re_view">
+                    <view class="re_f_line1"><image class="re_f_l_img" src="../../images/anniversary_13.png"></image></view>
+                    <view class="re_f_line2"><image class="re_f_name" src="../../images/anniversary_14.png"></image><input class="name" placeholder="好友姓名" bindinput="bindNameInput" focus="{{nameFocus}}" value="{{tempNameValue}}" /></view>
+                    <view class="re_f_line2"><image class="re_f_phone" src="../../images/anniversary_15.png"></image><input class="phone" type="number" placeholder="好友手机号" bindinput="bindPhoneInput" focus="{{phoneFocus}}" value="{{tempPhoneValue}}"/></view>
+                    <view class="re_f_line3" bindtap="recomSubmit"><image class="re_f_3_img" src="../../images/anniversary_16.png"></image></view>
+                    <view class="re_f_line4">佰仟小伙伴***会联系您的好友</view>
+                </view>
+            </view>
+            <view class="re_rule">
+                <view class="re_view">
+                    <view class="re_r_p_1">活动规则</view>
+                    <view class="re_r_p_2">1 您填写好友的姓名和手机号，即可获得随机小红包。</view>
+                    <view class="re_r_p_2">2 好友在您推荐后的15天内办理佰仟业务，<span>好友现场即可抽奖。您可于第二天上午收到一个抽奖通知。</span></view>
+                    <view class="re_r_p_2">3 抽中金额立马<span>抵扣到您的还款计划中。</span><br/>
+                    如果您抽到“<span>全免单</span>”，佰仟为您减免最近办理的一笔合同的<span>全部剩余还款额</span>，合同在第二天自动提前结清。如果您抽到“<span>还款抵用券</span>”，系统会自动为您抵扣<span>每个月的客户服务费和财务管理费</span>，从最近一期开始抵扣，直至券额抵清。</view>
+                    <view class="re_r_p_2">您最多可推荐5个好友成功办单。<br/>
+                    奖励以好友办理业务的时间（2016.12.16-2017.01.13）为准。</view>
+                    <view class="re_r_p_2">*依国家相关法律规定，还款减免金额不得高于5000元。<br/>
+                    *本活动最终解释权归佰仟金融所有</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    
+</view>
+<view class="tips {{isTipsShow}}">{{tipsTxt}}</view>
+
+<view class="layer_container {{isLayerShow}}">
+    <view class="bg"></view>
+    <view class="layer_cont_wrap">
+        <!--拆红包-->
+        <view class="red_paper">
+           <view class="red_p_c">
+                <view class="re_p_1">感谢推荐</view> 
+                <view class="re_p_2">仟妹送您小红包</view> 
+                <view class="grab_btn" bindtap="OpenPaper"><image class='grab_btn_img' src="../../images/anniversary_22.png"></image></view>
+           </view> 
+           <image class="red_paper_img" src="../../images/anniversary_18.png"></image>
+           <view class="close_btn" bindtap="closeLayer"><image class='close_btn_img' src="../../images/anniversary_21.png"></image></view>
+        </view>
+        <!--红包拆开-->
+        <view class="open_paper {{isOpenPaperShow}}">
+            <scroll-view scroll-y="true" class="inner_view_1">
+                <view class="p_result">
+                    <image class='p_result_img' src="../../images/anniversary_19.png"></image>
+                    <view class="p_result_txt"><span class="num">0.50</span>元</view>
+                </view>
+                <view class="p_1">最近一期自动抵扣500元还款额</view> 
+                <view class="p_3">好友在活动期间办理业务</view> 
+                <view class="p_3">你和好友都有机会白拿手机</view> 
+                <view class="grab_btn" bindtap="closeLayer">
+                    <image class='grab_btn_img' src="../../images/anniversary_23.png"></image>
+                    <view class="grab_btn_txt">继续推荐</view>
+                </view>
+                <view class="p_remark"><span bindtap="openRuleIns">怎样才能抽大奖</span></view>
+            </scroll-view>
+            <view class="close_btn" bindtap="closeLayer"><image class='close_btn_img' src="../../images/anniversary_21.png"></image></view>
+        </view>
+        <!--推荐满5个-->
+        <view class="more_rec {{isMoreRecShow}}">
+            <scroll-view scroll-y="true" class="inner_view_2">
+                <view class="p_1">感谢亲的推荐！<br/>欢迎继续推荐！</view> 
+                <view class="p_2">只要好友成功办单<br/>您就有机会抽免单啦</view> 
+                <view class="grab_btn" bindtap="closeLayer">继续推荐</view>
+            </scroll-view>
+            <view class="close_btn" bindtap="closeLayer"><image class='close_btn_img' src="../../images/anniversary_21.png"></image></view>
+        </view>
+        <!--活动说明-->
+        <view class="rule_ins {{isRuleInsShow}}">
+            <scroll-view scroll-y="true" class="inner_view_3">
+                <view class="r_p_1">怎样才能抽大奖</view>
+                <view class="r_p_2">当您的好友在2017年1月13日之前成功办单，你和好友可以都可以抽大奖。</view>
+                <view class="r_p_2">您可抽取全免单大奖、5-500元还款抵用券；</view>
+                <view class="r_p_2">您的好友可抽iPhone 7！话费、流量、购物卡……</view>
+            </scroll-view>
+            <view class="close_btn" bindtap="closeLayer"><image class='close_btn_img' src="../../images/anniversary_21.png"></image></view>
+        </view>
+    </view>
+</view>
