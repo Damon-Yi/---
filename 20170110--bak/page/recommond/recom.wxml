@@ -6,14 +6,13 @@
             <image class="a_img_1" src="../../images/anniversary_9.png"></image>
             <image class="a_img_2" src="../../images/anniversary_17.png"></image>
         </view>
-        <view class="swiper_wrap">
-            <scroll-view scroll-y="true" class="rolling_news" scroll-into-view="{{toView}}">
-                <block wx:for-items="{{swiperList}}" wx:key="{{item.id}}">
-                    <view id="{{item.id}}" class="rolling_new">{{item.text}}</view>
-                </block>
-            </scroll-view>
-            <view class="swiper_mask"></view> 
-        </view>    
+        <view class="rolling_news swiper-container">
+            <!-- <view class="swiper-wrapper">
+                <view class="swiper-slide"><span class="rolling_new">我是滚动的中奖信息~~~</span></view>
+                <view class="swiper-slide"><span class="rolling_new">我是滚动的中奖信息~~~</span></view>
+                <view class="swiper-slide"><span class="rolling_new">我是滚动的中奖信息~~~</span></view>
+            </view> -->
+        </view>
         <view class="re_cont">
             <view class="re_users">
                 <block wx:for-items="{{list}}" wx:key="{{item.id}}">
@@ -44,10 +43,10 @@
                     <view class="re_r_p_2">2 好友在您推荐后的15天内办理佰仟业务，<span>好友现场即可抽奖。您可于第二天上午收到一个抽奖通知。</span></view>
                     <view class="re_r_p_2">3 抽中金额立马<span>抵扣到您的还款计划中。</span><br/>
                     如果您抽到“<span>全免单</span>”，佰仟为您减免最近办理的一笔合同的<span>全部剩余还款额</span>，合同在第二天自动提前结清。如果您抽到“<span>还款抵用券</span>”，系统会自动为您抵扣<span>每个月的客户服务费和财务管理费</span>，从最近一期开始抵扣，直至券额抵清。</view>
-                    <view class="re_r_p_2">您最多可推荐5个好友成功办单。</view>
-                    <view class="re_r_p_2">奖励以好友办理业务的时间（2016.12.16-2017.01.13）为准。</view>
-                    <view class="re_r_p_3">*依国家相关法律规定，还款减免金额不得高于5000元。</view>
-                    <view class="re_r_p_3">*本活动最终解释权归佰仟金融所有</view>
+                    <view class="re_r_p_2">您最多可推荐5个好友成功办单。<br/>
+                    奖励以好友办理业务的时间（2016.12.16-2017.01.13）为准。</view>
+                    <view class="re_r_p_2">*依国家相关法律规定，还款减免金额不得高于5000元。<br/>
+                    *本活动最终解释权归佰仟金融所有</view>
                 </view>
             </view>
         </view>
@@ -90,14 +89,9 @@
         <!--推荐满5个-->
         <view class="more_rec {{isMoreRecShow}}">
             <scroll-view scroll-y="true" class="inner_view_2">
-                <view class="p_1">感谢亲的推荐！</view>
-                <view class="p_3">欢迎继续推荐！</view> 
-                <view class="p_2">只要好友成功办单</view>
-                <view class="p_4">您就有机会抽免单啦</view> 
-                <view class="grab_btn" bindtap="closeLayer">
-                    <image class='grab_btn_img' src="../../images/anniversary_23.png"></image>
-                    <view class="grab_btn_txt">继续推荐</view>
-                </view>
+                <view class="p_1">感谢亲的推荐！<br/>欢迎继续推荐！</view> 
+                <view class="p_2">只要好友成功办单<br/>您就有机会抽免单啦</view> 
+                <view class="grab_btn" bindtap="closeLayer">继续推荐</view>
             </scroll-view>
             <view class="close_btn" bindtap="closeLayer"><image class='close_btn_img' src="../../images/anniversary_21.png"></image></view>
         </view>

@@ -11,23 +11,8 @@ Page({
             }
         ],
         swiperList:[
-            {
-                id:'msg1',
-                text:'中奖sdfasdfsad消息1' 
-            },
-            {
-                id:'msg2',
-                text:'中奖消gfdgfdgds息2' 
-            },
-            {
-                id:'msg3',
-                text:'中zvcxzvcvx奖消息3' 
-            }
+
         ],
-
-        toView: 'msg1',
-        toViewIndex:0,
-
         tempNameValue: '',
         tempPhoneValue: '',
         nameFocus: false,
@@ -37,22 +22,6 @@ Page({
         tipsTxt:'',
 
         isLayerShow:'',//RedPaperShow,OpenPaperShow,MoreRecShow,RuleInsShow,
-    },
-    onReady: function() {// Do something when page ready.
-        var _that = this;
-        setInterval(function(){
-            if(_that.data.toViewIndex<_that.data.swiperList.length){
-                _that.setData({
-                    toView: _that.data.swiperList[_that.data.toViewIndex].id,
-                    toViewIndex:_that.data.toViewIndex+1
-                });
-            }else{
-                _that.setData({
-                    toView: _that.data.swiperList[0].id,
-                    toViewIndex:0
-                });
-            }
-        },1500);
     },
     recomSubmit: function (e) {
         console.log(e);
@@ -152,11 +121,4 @@ Page({
             isLayerShow: 'RuleInsShow'
         });
     }
-    // onShareAppMessage: function () {
-    //     return {
-    //       title: 'Damon',
-    //       desc: '小程序分享',
-    //       path: 'page/recommond/recom'
-    //     }
-    // }
 });

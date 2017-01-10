@@ -1,14 +1,15 @@
 {
   "pages": [
     
-    "page/recommond/recom"
+    "page/recommond/recom",
 
+    "page/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "分期购",
     "navigationBarBackgroundColor": "#f8f8f8",
-    "backgroundColor": "#103a60"
+    "backgroundColor": "#f8f8f8"
   },
   "networkTimeout": {
     "request": 10000,
