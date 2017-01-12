@@ -1,0 +1,8 @@
+<view class="info">
+    <view class="info_box">
+    	<view class="info_title">{{infoTitle}}</view>
+    	<view class="info_text">{{infoText}}</view>
+    </view>
+</view>
+
+  

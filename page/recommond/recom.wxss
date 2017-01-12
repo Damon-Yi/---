@@ -87,6 +87,12 @@
 .MoreRecShow .more_rec{display: block;}
 .RuleInsShow{display: block;}
 .RuleInsShow .rule_ins{display: block;}
+.commendPanelShow{display: block;}
+.commendPanelShow .commend_panel{display: block;}
+.commendPanelSucShow{display: block;}
+.commendPanelSucShow .commend_suc_panel{display: block;}
+.commendPanelFailShow {display: block;}
+.commendPanelFailShow .commend_fail_panel{display: block;}
 
 /*拆红包*/
 .red_paper{display: none;width: 422rpx;height: 466rpx;position: relative;background: url(../../images/anniversary_18.png) no-repeat center center;background-size: contain;color: #fff;margin: 0 auto;padding-top: 140rpx;}
@@ -142,3 +148,25 @@
 
 .tips0{font-size: 28rpx;color: #fff;text-align: center;display: none;}
 .tips0_show{display: block;}
+
+/*评价*/
+.commend_panel{width: 460rpx;padding: 40rpx 20rpx 30rpx;border-radius: 5px;position: relative;background-color: #fff;margin: 0 auto;display: none;}
+.commend_panel .c_cont{}
+.commend_panel .c_cont .c_u_icon{width: 120rpx;height: 120rpx;margin:0 auto;display: block;}
+.commend_panel .c_cont .c_u_name{margin:18rpx auto 24rpx;display: block;color: #3a3939;font-size: 30rpx;}
+.commend_panel .c_cont .c_op{border-top:1px dashed #999;padding:20rpx 10rpx;text-align: left;}
+.commend_panel .c_cont .c_op_txt{font-size: 24rpx;color: #8a8a8a;display: inline-block;vertical-align: middle;}
+.commend_panel .c_cont .c_op_start{margin: 14rpx 0;}
+.commend_panel .c_cont .start{width:50rpx;height: 48rpx;display: inline-block;vertical-align: middle;margin: 0 4rpx;}
+.commend_panel .c_cont .submit_btn{width: 360rpx;height: 70rpx;margin: 40rpx auto 0;display: block;}
+.commend_panel .c_close_btn{width: 36rpx;height: 34rpx;position: absolute;top: 20rpx;right: 20rpx;}
+/*评价成功*/
+.commend_suc_panel{width: 460rpx;padding: 40rpx 20rpx 30rpx;border-radius: 5px;position: relative;background-color: #fff;margin: 0 auto;display: none;}
+.commend_suc_panel .c_cont{}
+.commend_suc_panel .c_cont .c_r_icon{width: 100rpx;height: 100rpx;margin:0 auto;display: block;}
+.commend_suc_panel .c_cont .c_r_txt{margin:20rpx auto;display: block;color: #3a3939;font-size: 30rpx;}
+/*评价失败*/
+.commend_fail_panel{width: 460rpx;padding: 40rpx 20rpx 30rpx;border-radius: 5px;position: relative;background-color: #fff;margin: 0 auto;display: none;}
+.commend_fail_panel .c_cont{}
+.commend_fail_panel .c_cont .c_r_icon{width: 100rpx;height: 100rpx;margin:0 auto;display: block;}
+.commend_fail_panel .c_cont .c_r_txt{margin:20rpx auto;display: block;color: #3a3939;font-size: 30rpx;text-align: left;}

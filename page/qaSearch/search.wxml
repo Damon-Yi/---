@@ -1,0 +1,17 @@
+<view class="search">
+    <view class="s_wrap">
+    	<image class="s_icon" src="../../images/f_top_text_bg.png"></image>
+    	<input class="s_input" value="{{searchTxt}}" placeholder="请输入您要查找的内容" auto-focus/>
+	</view>
+	<navigator url="../qaList/list?keyWord={{searchTxt}}" class="s_btn">搜索</navigator>
+</view>
+<view class="qa_list">
+	<view class="qa_title">常见问题精选：点击立搜</view>
+	<view class="qa_items">
+		<block wx:for-items="{{qaItems}}" wx:key="{{item.id}}">
+			<navigator url="../qaList/list?keyWord={{item}}" class="qa_item">{{item}}</navigator>
+		</block>
+	</view>
+</view>
+
+  

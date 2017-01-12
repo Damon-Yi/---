@@ -1,0 +1,4 @@
+.info{margin: 30rpx 50rpx;word-wrap: break-word;text-justify : auto; text-align:justify;}
+.info .info_box{border:1px solid #666;border-radius: 10rpx;}
+.info .info_box .info_title{font-size: 26rpx;color: #fff;background-color: #364c64;padding: 4rpx 20rpx;border-top-left-radius: 5rpx;border-top-right-radius: 5rpx;}
+.info .info_box .info_text{margin: 30rpx 40rpx;font-size: 24rpx;color: #364c64;}

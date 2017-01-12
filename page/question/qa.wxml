@@ -1,0 +1,22 @@
+<view class="qa">
+    <image class="main_img" src="../../images/f_con1_top_img.png"></image>
+    <navigator url="../qaSearch/search" class="search">
+        <text>有问题搜我</text>
+    </navigator>
+    <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+    	<view class="qa_section">
+    		<view class="qa_sec_td_1">
+    			<image class="qa_sec_img" src="../../images/stages_img0{{item.type}}.png"></image>
+    			<text class="qa_type_txt">{{item.typeName}}</text>
+    		</view>
+    		<view class="qa_sec_td_2">
+    			<block wx:for-items="{{item.qas}}" wx:key="{{item.id}}">
+	    			<navigator url="../qaInfo/info?infoId={{item.infoId}}" class="qa_title">{{item.infoTxt}}</navigator>
+    			</block>
+    		</view>
+    		<navigator url="../qaList/list?typeId={{item.typeId}}" class="qa_more">更多</navigator>
+    	</view>
+    </block>
+</view>
+
+  

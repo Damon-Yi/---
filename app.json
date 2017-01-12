@@ -1,6 +1,11 @@
 {
   "pages": [
+  
     
+    "page/question/qa",
+    "page/qaList/list",
+    "page/qaInfo/info",
+    "page/qaSearch/search",
     "page/recommond/recom"
 
   ],
@@ -8,7 +13,7 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "分期购",
     "navigationBarBackgroundColor": "#f8f8f8",
-    "backgroundColor": "#103a60"
+    "backgroundColor": "#ffffff"
   },
   "networkTimeout": {
     "request": 10000,

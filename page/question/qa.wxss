@@ -1,0 +1,12 @@
+.qa{padding:26rpx 35rpx;font-family: 'STXihei';}
+.qa image{display: block;margin: 0 auto;}
+.qa .main_img{width: 676rpx;height: 236rpx;}
+.search{width: 676rpx;margin: 30rpx auto;color: #fff;text-align: center;height:94rpx;line-height:94rpx;background-color: #ff6f34;border-radius: 10rpx;font-size: 32rpx;}
+.qa_section{position: relative;background-color: #fff;border-radius: 10rpx;padding:24rpx;color: #34495e;font-size: 28rpx;display: flex;margin: 20rpx auto;}
+.qa_section .qa_sec_td_1{text-align: center;width: 160rpx;border-right: 1px dashed #ddd;}
+.qa_section .qa_sec_td_1 .qa_sec_img{max-width:60rpx;max-height: 60rpx;margin-top:14rpx;margin-bottom:18rpx;
+}
+.qa_section .qa_sec_td_1 .qa_type_txt{margin-top:14rpx;margin-bottom:18rpx;}
+.qa_section .qa_sec_td_2{flex: 1;padding-left: 18rpx;}
+.qa_section .qa_sec_td_2 .qa_title{line-height:1.4;}
+.qa_section .qa_more{color: #ff6f34;position: absolute;top:6rpx;right:10rpx;padding:2rpx 8rpx;}

@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
     data: {
         list: [
@@ -36,10 +37,90 @@ Page({
         isTipsShow:'',//'tips_show tips_center'
         tipsTxt:'',
 
-        isLayerShow:'',//RedPaperShow,OpenPaperShow,MoreRecShow,RuleInsShow,
+        isLayerShow:'commendPanelShow',//RedPaperShow,OpenPaperShow,MoreRecShow,RuleInsShow,commendPanelShow,commendPanelSucShow,commendPanelFailShow
+        successPanelInfo:'',
+        userIconUrl:'',
+        userName:'',
+        encryptedData:'',
+        iv:'',
+       _code:'',
+        store_id:'',
+        sale_id:'',
+ 
+        starts:[
+            [
+                {
+                    id:'start1',
+                    isSelected:false 
+                },
+                {
+                    id:'start2',
+                    isSelected:false 
+                },
+                {
+                    id:'start3',
+                    isSelected:false 
+                },
+                {
+                    id:'start4',
+                    isSelected:false 
+                },
+                {
+                    id:'start5',
+                    isSelected:false 
+                }
+            ],[
+                {
+                    id:'start6',
+                    isSelected:false 
+                },
+                {
+                    id:'start7',
+                    isSelected:false 
+                },
+                {
+                    id:'start8',
+                    isSelected:false 
+                },
+                {
+                    id:'start9',
+                    isSelected:false 
+                },
+                {
+                    id:'start10',
+                    isSelected:false 
+                }
+            ]
+        ]
     },
+
     onReady: function() {// Do something when page ready.
+
         var _that = this;
+
+        wx.getUserInfo({
+          success: function(res) {
+            var userInfo = res.userInfo;
+            var nickName = userInfo.nickName;
+            var avatarUrl = userInfo.avatarUrl;
+            var gender = userInfo.gender; //性别 0：未知、1：男、2：女 
+            var province = userInfo.province;
+            var city = userInfo.city;
+            var country = userInfo.country;
+            _that.setData({
+                userIconUrl: avatarUrl,
+                userName: nickName,
+                encryptedData:res.encryptedData,
+                iv:res.iv
+            });
+          }
+        })
+        _that.setData({
+            //isLayerShow:'commendPanelShow'
+        });
+
+
+        
         setInterval(function(){
             if(_that.data.toViewIndex<_that.data.swiperList.length){
                 _that.setData({
@@ -55,6 +136,7 @@ Page({
         },1500);
     },
     recomSubmit: function (e) {
+        var _that = this;
         console.log(e);
         var phone = this.data.tempPhoneValue,
         name = this.data.tempNameValue;
@@ -86,7 +168,24 @@ Page({
             this.removeTips();
             return false;
         }
+ 
+         wx.login({
+            success: function(res){
+                var code = res.code;
+                 wx.getUserInfo({
+                    success: function (res) {
+                        _that.setData({
+                            encryptedData:res.encryptedData,
+                            iv:res.iv
+                        });
+                        request(_that,{'encryptedData':_that.data.encryptedData,'iv':_that.data.iv,'code':code,'name':name,'phone':phone,'store_id':_that.data.store_id,'sale_id':_that.data.sale_id});
+                    }
+                })
+            }
+        });
+            
 
+/** 
         var recItem = {
             id:'3',
             name:name
@@ -97,20 +196,21 @@ Page({
             list: recItems
         });
         if(recItems.length>5){
-            /*5次*/
+            
             this.setData({
                 isLayerShow: 'MoreRecShow'
             }); 
         }else{
-            /*弹红包*/
+           
             this.setData({
                 isLayerShow: 'RedPaperShow'
             }); 
         }
         
-        
+       
+       request({'encryptedData':this.data.encryptedData,'iv':this.data.iv,'code':this.data._code,'name':name,'phone':phone,'store_id':this.data.store_id,'sale_id':this.data.sale_id});*/
         //清空输入框
-        this.clearInput();
+        
     },
     bindNameInput: function(e) {
         this.setData({
@@ -151,7 +251,7 @@ Page({
         this.setData({
             isLayerShow: 'RuleInsShow'
         });
-    }
+    },
     // onShareAppMessage: function () {
     //     return {
     //       title: 'Damon',
@@ -159,4 +259,89 @@ Page({
     //       path: 'page/recommond/recom'
     //     }
     // }
+    commendSubmit:function(){//评价提交
+        var _that = this;
+        var index_1 = '';
+        var index_2 = '';
+        var startsArr = this.data.starts;
+        for(var j = 0;j<startsArr[0].length;j++){
+            if(startsArr[0][j].isSelected ){
+                index_1 = j;
+            }
+        }
+
+        for(var j = 0;j<startsArr[1].length;j++){
+            if(startsArr[1][j].isSelected ){
+                index_2 = j;
+            }
+        }
+
+        this.setData({
+            isLayerShow: 'commendPanelSucShow',
+            successPanelInfo:'提交成功',
+            //isLayerShow: 'commendPanelFailShow'
+            sale_id:index_1+1,
+            store_id:index_2+1
+        });
+        setTimeout(function(){
+            _that.setData({
+                isLayerShow: ''
+            });
+        },1500);
+    },
+    startTap:function(event){//
+        var curId = event.currentTarget.id;
+        var startsArr = this.data.starts;
+        for(var i = 0;i<startsArr.length;i++){
+            for(var j = 0;j<startsArr[i].length;j++){
+                if(curId==startsArr[i][j].id){
+                    for(var k = 0;k<=j;k++){
+                        startsArr[i][k].isSelected = true;
+                    }
+                    for(var l = j+1;l<startsArr[i].length;l++){
+                        startsArr[i][l].isSelected = false;
+                    }
+                    this.setData({
+                        starts: startsArr
+                    });
+                }
+            }
+        }
+    }
 });
+
+
+//好友推荐服务器请求
+function request(obj,arr){
+    console.log(arr);
+    wx.showToast({
+        title:'loading',
+        icon: 'loading',
+        duration: 1500
+    });
+    wx.request({
+        url: 'https://min.yiqitansuo.com/appapi/mini/userinfo', 
+        data: {'encryptedData':arr.encryptedData,'iv':arr.iv,'code':arr.code,'name':arr.name,'phone':arr.phone,'store_id':arr.store_id,'sale_id':arr.sale_id},
+        method:'POST',
+        header: {'content-type':'application/x-www-form-urlencoded'}, // 设置请求的 header
+        success: function(res) {
+            console.log(res.data.msg);
+            // wx.showToast({
+            //     title: res.data.msg?res.data.msg:'',
+            //     icon: 'success',
+            //     duration: 5000
+            // });
+            obj.setData({
+                isLayerShow: 'commendPanelSucShow',
+                successPanelInfo:res.data.msg
+                //isLayerShow: 'commendPanelFailShow'
+            });
+            obj.clearInput();
+            setTimeout(function(){
+                obj.setData({
+                    isLayerShow: ''
+                });
+            },4000);
+        }
+    })
+}
